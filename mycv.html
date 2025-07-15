@@ -9,13 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-   
     :root {
-      --primary-color: #005f73;      
-      --secondary-color: #9c27b0;    
-      --light-bg: #f3f3f3;
+      --primary-color: #005f73;
+      --secondary-color: #9c27b0;
+      --light-bg: #ffffff;
       --light-text: #1e1e1e;
-      --light-box: #ffffff;
+      --light-box: #f3f3f3;
       --dark-bg: #1e1e1e;
       --dark-text: #f1f1f1;
       --dark-box: #2a2a2a;
@@ -29,56 +28,38 @@
       color: var(--dark-text);
     }
 
-    /* Hide the theme toggle checkbox */
-    #theme-toggle {
-      display: none;
-    }
-
-    /* Light mode styles when checkbox is checked */
-    #theme-toggle:checked ~ .container {
+    body.light {
       background-color: var(--light-bg);
       color: var(--light-text);
     }
 
-    #theme-toggle:checked ~ .container .box {
-      background-color: var(--light-box);
-    }
-
-    #theme-toggle:checked ~ .container a {
-      color: var(--secondary-color);
-    }
-
-    #theme-toggle:checked ~ .theme-toggle label {
-      background-color: #fff;
-      border: 2px solid #000;
-    }
-
-    /* Theme toggle button (circle) */
     .theme-toggle {
       display: flex;
       justify-content: flex-end;
       padding: 10px 20px;
     }
 
-    .theme-toggle label {
-      display: inline-block;
+    .theme-toggle button {
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background-color: #000;
       border: 2px solid #fff;
+      background-color: #000;
       cursor: pointer;
       transition: all 0.3s;
     }
 
-    /* Container for all content */
+    body.light .theme-toggle button {
+      background-color: #fff;
+      border: 2px solid #000;
+    }
+
     .container {
       max-width: 900px;
       margin: auto;
       padding: 20px;
     }
 
-    /* Header section for My CV title */
     .header {
       text-align: center;
       margin: 40px 0 30px;
@@ -90,13 +71,17 @@
       margin: 0;
     }
 
-    /* Info box section */
     .box {
       background-color: var(--dark-box);
       margin-bottom: 20px;
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       border-radius: 0;
+      transition: background-color 0.3s;
+    }
+
+    body.light .box {
+      background-color: var(--light-box);
     }
 
     .box h2 {
@@ -129,21 +114,17 @@
 </head>
 <body>
 
-  <!-- Theme toggle checkbox -->
-  <input type="checkbox" id="theme-toggle">
+  <!-- Theme toggle -->
   <div class="theme-toggle">
-    <label for="theme-toggle" title="Toggle Light/Dark Theme"></label>
+    <button onclick="document.body.classList.toggle('light')" title="Toggle Light/Dark Theme"></button>
   </div>
 
   <!-- Page content -->
   <div class="container">
-
-    <!-- Title section -->
     <div class="header">
       <h1>My CV</h1>
     </div>
 
-    <!-- Information section -->
     <div class="box info">
       <p><strong>Name:</strong> Budur</p>
       <p><strong>Specialization:</strong> Computer Science </p>
@@ -152,7 +133,6 @@
       <p><strong>Phone:</strong> ...</p>
       <p><strong>GitHub:</strong> <a href="https://github.com/Ba467" target="_blank">github.com/Ba467</a></p>
     </div>
-
   </div>
 
 </body>
